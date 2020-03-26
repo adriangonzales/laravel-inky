@@ -6,6 +6,7 @@ use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Compilers\CompilerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
+use Illuminate\Support\Str;
 
 class InkyCompilerEngine extends CompilerEngine
 {
@@ -34,7 +35,7 @@ class InkyCompilerEngine extends CompilerEngine
         // get the styles
         $styles = $stylesheetsHrefs->map(function ($stylesheet) {
             //  if this appears to be a local asset, get it locally
-            if (starts_with($stylesheet, asset(''))) {
+            if (Str::startsWith($stylesheet, asset(''))) {
                 $stylesheet = str_replace(asset(''), public_path('/'), $stylesheet);
             }
 
