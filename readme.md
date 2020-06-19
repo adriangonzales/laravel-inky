@@ -1,6 +1,4 @@
-[![Build Status](https://img.shields.io/travis/petecoop/laravel-inky.svg)](https://travis-ci.org/petecoop/laravel-inky)
-
-Allows you to use Foundation for Email(https://foundation.zurb.com/emails.html) email templates nicely in Laravel 5.
+Allows you to use Foundation for Email(https://foundation.zurb.com/emails.html) email templates nicely in Laravel.
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 
@@ -8,16 +6,10 @@ Any views with a `.inky.php` extension will be compiled with both Inky and Blade
 
 Require with composer
 ```
-composer require petecoop/laravel-inky
+composer require christhompsontldr/laravel-inky
 ```
 
-Once installed, you'll need to register the service provider. Open `config/app.php` and add to the `providers` key:
-
-```
-Christhompsontldr\LaravelInky\InkyServiceProvider::class
-```
-
-Move the assets to your application
+Publish the assets
 
 ```
 php artisan vendor:publish --provider="Christhompsontldr\LaravelInky\InkyServiceProvider"
@@ -27,7 +19,7 @@ php artisan vendor:publish --provider="Christhompsontldr\LaravelInky\InkyService
 
 Check the [Foundation for Emails docs](http://foundation.zurb.com/emails/docs/index.html) for full usage on how to use Inky and Foundation for Emails CSS.
 
-Create an Inky view e.g. `emails/welcome.inky.php`
+Create an Inky view e.g. `resources/views/emails/welcome.inky.php`
 
 ```blade
 <container>
@@ -41,7 +33,7 @@ Use `Mail` as usual in Laravel
 
 ```php
 Mail::send('emails.welcome', ['name' => $user->name], function ($m) use ($user) {
-  $m->from('hello@app.com', 'Your Application');
+  $m->from('hello@example.com', 'Example Application');
 
   $m->to($user->email, $user->name)->subject('Welcome!');
 });
