@@ -38,5 +38,11 @@
                 "Christhompsontldr\\LaravelInky\\InkyServiceProvider"
             ]
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:jameswagoner/inky.git"
+        }
+    ]
 }
